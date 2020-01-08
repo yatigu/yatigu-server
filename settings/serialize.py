@@ -10,8 +10,8 @@ def serialize(x):
 @serialize.register(User)
 def serialize(user):
     result = {
-        'user_id': user.user_id,
+        'user_phone': user.user_phone,
         'user_pw': user.user_pw,
-        'user_name': user.user_name,
+        'user_status': user.user_status,
     }
     return result
