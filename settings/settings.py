@@ -38,6 +38,7 @@ else:  # select not permission mode
 
 # manager
 app.debug = DEBUG  # 실행 모드에 따라 디버그 온오프
+app.threaded = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
