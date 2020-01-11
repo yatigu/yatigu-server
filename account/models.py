@@ -10,10 +10,11 @@ class User(db.Model):
     user_status = db.Column(db.String(30), default='STOP')  # 서비스 사용중인지 현재 상태
     user_rank = db.Column(db.String(30))  # 일반유저인지 스태프인지 구분
 
-    def __init__(self, user_phone, user_pw, user_status):
+    def __init__(self, user_phone, user_pw, user_status, user_rank):
         self.user_phone = user_phone
         self.user_pw = user_pw
         self.user_status = user_status
+        self.user_rank = user_rank
 
     def __repr__(self):
         return 'user_phone : {}, user_pw : {}, user_status : {}, user_rank : {}'.\

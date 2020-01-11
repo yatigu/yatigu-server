@@ -14,15 +14,15 @@ class AccountUser(MethodView):
         return jsonify(serialize(get_user)), 200
 
     def post(self):
-        try:
-            new_user = User(user_phone=request.form['user_phone'],  # 리퀘스트로 정보를 생성해서 저장함
-                            user_pw=request.form['user_pw'],
-                            user_status=request.form['user_status'],
-                            user_rank=request.form['user_rank'])
-            db.session.add(new_user)
-            db.session.commit()
-        except:  # 이미 존재하는 정보(규칙 어긋남)
-            return jsonify(), 400
+        # try:
+        new_user = User(user_phone=request.form['user_phone'],  # 리퀘스트로 정보를 생성해서 저장함
+                        user_pw=request.form['user_pw'],
+                        user_status=request.form['user_status'],
+                        user_rank=request.form['user_rank'])
+        db.session.add(new_user)
+        db.session.commit()
+        # except:  # 이미 존재하는 정보(규칙 어긋남)
+        #     return jsonify(), 400
 
         return jsonify(serialize(new_user)), 200
 
