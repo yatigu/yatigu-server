@@ -13,7 +13,7 @@ DEBUG = False  # 디버그모드
 
 # connect db
 USER = 'yatigu'  # username
-PASSWOLRD = 'root'  # postgresql pw
+PASSWOLRD = 'yatigu'  # postgresql pw
 PORT = '5432'  # postgresql port
 NAME = 'yatigu'  # db name
 POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{PORT}/{NAME}'  # postgresql uri

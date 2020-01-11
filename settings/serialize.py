@@ -13,5 +13,6 @@ def serialize(user):
         'user_phone': user.user_phone,
         'user_pw': user.user_pw,
         'user_status': user.user_status,
+        'user_rank': user.user_rank,
     }
     return result
