@@ -70,13 +70,12 @@ class Korail():  # 코레일 매크로 클래스
         self.select('//*[@name="selGoDay"]', self.ticket_info.day)  # 일 선택
         self.click_element('//*[@alt="조회하기"]')  # 조회하기 클릭
 
-        # print(driver.find_element_by_xpath('//*[@id="tableResult"]')\
-        #     .text)  # 임시코드임 여기는 얘기좀해봐야함
-        # driver.find_element_by_xpath('//*[@alt="로그아웃"]').click()  # 다음 유저를 위해 로그아웃
-        # driver.implicitly_wait(3)
-        # Alert(driver).accept()  # 로그아웃 얼럴트창 수락
-        # driver.implicitly_wait(3)
-        # driver.close()
+    def logout(self):
+        self.driver.find_element_by_xpath('//*[@alt="로그아웃"]').click()  # 다음 유저를 위해 로그아웃
+        self.driver.implicitly_wait(3)
+        Alert(self.driver).accept()  # 로그아웃 얼럴트창 수락
+        self.driver.implicitly_wait(3)
+        self.driver.close()
 
     def click_element(self, path):  # 해당 엘리먼트를 클릭하는 함수
         self.driver.find_element_by_xpath(path).click()  # 휴대전화로 로그인 클릭
