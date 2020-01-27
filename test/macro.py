@@ -25,8 +25,9 @@ class Korail():  # 코레일 매크로 클래스
 
         self.make_driver()  # 드라이버를 셋팅함
         self.login()  # 로그인
-        self.book_ticket()  # 티켓 예매  # todo 티켓 어떻게 골라잡을지 회의해야함
-        # self.driver.close()  # 드라이버 종료  # todo 실제 동작시킬땐 지워야함
+        self.logout()  # 로그아웃
+        # self.book_ticket()  # 티켓 예매  # todo 티켓 어떻게 골라잡을지 회의해야함
+        self.driver.close()  # 드라이버 종료  # todo 실제 동작시킬땐 지워야함
 
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
@@ -75,7 +76,6 @@ class Korail():  # 코레일 매크로 클래스
         self.driver.implicitly_wait(3)
         Alert(self.driver).accept()  # 로그아웃 얼럴트창 수락
         self.driver.implicitly_wait(3)
-        self.driver.close()
 
     def click_element(self, path):  # 해당 엘리먼트를 클릭하는 함수
         self.driver.find_element_by_xpath(path).click()  # 휴대전화로 로그인 클릭
@@ -111,7 +111,7 @@ class User_management():  # 유저를 관리하기 위한 클래스
 if __name__ == '__main__':
     users = User_management()  # 유저 관리 오브젝트 생성
     users.append_user()  # 유저 추가
-    users.append_user()  # 유저 추가
+    # users.append_user()  # 유저 추가
     '''
     위의 방식으로 유저들을 생성한 뒤 아래의 방식으로 컨트롤 해준다.
     유저를 생성할 때 드라이버를 연동시키는 과정에서 시간이 오래걸리기 때문에 생성하는건 스레드를 따로돌리면 좋을듯.
@@ -121,10 +121,10 @@ if __name__ == '__main__':
     시간을 정확하게 입력하여 인덱스로 버튼을 찾는다고 생각하면됨.
     검색해서 나오는 기차표들중 맨 위에서부터 1로 시작함.
     '''
-    for user in users.users_array:  # 유저를 컨트롤함
-        user.move_url('http://www.google.com')
-        user.send_keys('//*[@title="검색"]', 'asdq3wkejk')
-
-        user.move_url('http://www.google.com')
-        user.send_keys('//*[@title="검색"]', 'asdq3wkejk')
+    # for user in users.users_array:  # 유저를 컨트롤함
+    #     user.move_url('http://www.google.com')
+    #     user.send_keys('//*[@title="검색"]', 'asdq3wkejk')
+    #
+    #     user.move_url('http://www.google.com')
+    #     user.send_keys('//*[@title="검색"]', 'asdq3wkejk')
 
