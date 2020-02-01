@@ -8,10 +8,10 @@ import json
 class Station(MethodView):
     def get(self):
         station = get_station()
-        res = {'station': {}}
+        res = {'stations': {}}
 
         for index, data in enumerate(station):
-            res['station'][str(index)] = data
+            res['stations'][str(index)] = data
 
         return jsonify(res)
 
