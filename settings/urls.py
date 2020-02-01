@@ -7,6 +7,8 @@
 from settings.settings import app
 from login import urls as loginurls
 from account import urls as accounturls
+from info import urls as infourls
 
 app.register_blueprint(loginurls.app, url_prefix='/login')  # /login으로 시작하면 login_app으로 연결
 app.register_blueprint(accounturls.app, url_prefix='/account')
+app.register_blueprint(infourls.app, url_prefix='/info')
