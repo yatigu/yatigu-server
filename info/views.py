@@ -11,7 +11,6 @@ class Station(MethodView):
         res = {'station': {}}
 
         for index, data in enumerate(station):
-            [x.encode('utf-8') for x in data]
             res['station'][str(index)] = data
 
         return jsonify(res)
