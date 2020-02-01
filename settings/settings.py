@@ -23,6 +23,7 @@ POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{PORT}/{NAME}'  # pos
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRESQL  # db connect
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['JSON_AS_ASCII'] = False
 
 
 # select operation mode
