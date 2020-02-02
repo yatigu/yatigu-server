@@ -9,7 +9,7 @@ from flask_migrate import Migrate, MigrateCommand
 HOST_ADDR = '127.0.0.1'  # localhost 주소
 PORT_NUM = '8000'  # 서버 포트
 DEBUG = False  # 디버그모드
-
+CHROME_DRIVER_PATH = ''
 
 # connect db
 USER = 'yatigu'  # username
@@ -28,9 +28,11 @@ app.config['JSON_AS_ASCII'] = False
 
 # select operation mode
 if os.environ.get('MODE') == 'DEV':  # mode - development
+    CHROME_DRIVER_PATH = 'C:\chromedriver.exe'
     HOST_ADDR = '127.0.0.1'
     DEBUG = True
 elif os.environ.get('MODE') == 'RUN':  # mode - release
+    CHROME_DRIVER_PATH = '/home/ec2-user/git'
     HOST_ADDR = '0.0.0.0'
     DEBUG = False
 else:  # select not permission mode
