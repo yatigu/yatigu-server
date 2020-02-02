@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.alert import Alert
 from requests import Session
+from settings.settings import CHROME_DRIVER_PATH
 import time
 
 
@@ -20,7 +21,7 @@ class Korail():  # 코레일 매크로 클래스
         self.driver = None
         self.ticket_info = self.Ticket_info(source, destination, year, month, day)  # 티켓 정보를 담아줌
         self.korail_url = 'http://www.letskorail.com/korail/com/login.do'  # 로그인창 주소
-        self.chrome_driver_path = 'C:\chromedriver.exe'  # 크롬드라이버 경로
+        self.chrome_driver_path = CHROME_DRIVER_PATH  # 크롬드라이버 경로
         self.book_url = 'http://www.letskorail.com/ebizprd/EbizPrdTicketpr21100W_pr21110.do'  # 예매창 주소
 
         self.make_driver()  # 드라이버를 셋팅함
