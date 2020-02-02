@@ -32,7 +32,7 @@ if os.environ.get('MODE') == 'DEV':  # mode - development
     HOST_ADDR = '127.0.0.1'
     DEBUG = True
 elif os.environ.get('MODE') == 'RUN':  # mode - release
-    CHROME_DRIVER_PATH = '/home/ec2-user/git'
+    CHROME_DRIVER_PATH = '/home/ec2-user/git/chromedriver'
     HOST_ADDR = '0.0.0.0'
     DEBUG = False
 else:  # select not permission mode
