@@ -26,9 +26,9 @@ class Korail():  # 코레일 매크로 클래스
 
         self.make_driver()  # 드라이버를 셋팅함
         self.login()  # 로그인
-        self.logout()  # 로그아웃
-        # self.book_ticket()  # 티켓 예매  # todo 티켓 어떻게 골라잡을지 회의해야함
-        self.driver.close()  # 드라이버 종료  # todo 실제 동작시킬땐 지워야함
+        #self.logout()  # 로그아웃
+        self.book_ticket()  # 티켓 예매  # todo 티켓 어떻게 골라잡을지 회의해야함
+        #self.driver.close()  # 드라이버 종료  # todo 실제 동작시킬땐 지워야함
 
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
