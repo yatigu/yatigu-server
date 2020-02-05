@@ -10,7 +10,9 @@ def get_station():
 
     for i in station:
         if i.startswith('stationArr'):
-            station_arr = (i[17:].replace('\'', '').replace(';', '').replace('[', '').replace(']', '').strip().split(','))
+            station_arr = (i[17:].replace('\'', '').replace(';', '').replace('[', '').replace(']', '').replace('\'', '').split(','))
+            for k, j in enumerate(station_arr):
+                station_arr[k] = j.strip()
             station_array.append(station_arr)
 
     return station_array
