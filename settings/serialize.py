@@ -1,18 +1,23 @@
 from functools import singledispatch
 from settings.models import *
+from test.macro import Korail
+from typequery import GenericMethod
+
+serialize = GenericMethod('serialize')
+
+@serialize.of(bool)
+@serialize.of(type(None))
+@serialize.of(int)
+@serialize.of(float)
+@serialize.of(str)
+def serialize(value, **kwargs):
+    return value
+
+@serialize.of(Korail)
+def serialize(value, **kwargs):
+    return 'korail'
 
 
-@singledispatch
-def serialize(x):
-    return x
 
 
-@serialize.register(User)
-def serialize(user):
-    result = {
-        'user_phone': user.user_phone,
-        'user_pw': user.user_pw,
-        'user_status': user.user_status,
-        'user_rank': user.user_rank,
-    }
-    return result
+
