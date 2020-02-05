@@ -2,7 +2,7 @@
 # ip : 15.165.170.3:8000  
 
 ## API
-###/info/stationsget
+### /info/stationsget
 get : 기차역 이름을 가져옴
 ```    
 stations: {,…}
