@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def tickets():
+def get_tickets():
     params = {
         'selGoTrain': '05',
         'radJobId': '1',
