@@ -1,4 +1,4 @@
-from flask import request, jsonify
+'''from flask import request, jsonify
 from flask.views import MethodView
 from settings.serialize import serialize
 from .models import User, db
@@ -35,3 +35,4 @@ class AccountUser(MethodView):
         if request.form['user_status'] == 'RUN':  # 유저가 서비스를 이용하는 상태로 바뀌면
             user_list.append(get_user)  # 유저 리스트에 해당 유저를 추가한다.
         return jsonify(serialize(get_user)), 200
+'''
