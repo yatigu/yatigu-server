@@ -11,3 +11,16 @@ request
 ```
 status_code  
 200 : ok  
+
+### /info/tickets
+```
+request
+{
+date = '20200220',
+hour = '160000',
+start = '서울',
+end = '부산'
+}
+```
+status_code  
+200 : ok
