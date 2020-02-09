@@ -1,6 +1,5 @@
 from functools import singledispatch
 from settings.models import *
-from test.macro import Korail
 from typequery import GenericMethod
 
 serialize = GenericMethod('serialize')
@@ -13,9 +12,7 @@ serialize = GenericMethod('serialize')
 def serialize(value, **kwargs):
     return value
 
-@serialize.of(Korail)
-def serialize(value, **kwargs):
-    return 'korail'
+
 
 
 
