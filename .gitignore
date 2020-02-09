@@ -5,3 +5,4 @@ venv/*
 *.pyc
 migrations/*
 geckodriver.log
+.vs/
