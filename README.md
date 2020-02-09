@@ -14,6 +14,7 @@ status_code
 
 ### /info/tickets
 ```
+request
 {
 date = '20200220',
 hour = '160000',
