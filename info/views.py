@@ -1,17 +1,21 @@
-from flask import request, jsonify, make_response
+from flask import jsonify
 from flask.views import MethodView
-from settings.serialize import serialize
-from crawling.station import get_station
-from functools import wraps
-import json
+from crawling.stations import get_stations
+from crawling.tickets import get_tickets
 
-class Station(MethodView):
+
+class Stations(MethodView):
     def get(self):
-        station = get_station()
+        station = get_stations()
         res = {'stations': {}}
 
         for index, data in enumerate(station):
             res['stations'][str(index)] = data
 
         return jsonify(res)
+
+
+class Tickets(MethodView):
+    def get(self):
+        return jsonify(get_tickets())
 
