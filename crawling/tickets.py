@@ -22,7 +22,6 @@ def get_tickets():
         if index == 0 or index == 11:
             continue
         find_tr = value.find_all('td')
-        print(index)
         ticket_items = {}
         for i, v in enumerate(find_tr):
             if i == 0:
