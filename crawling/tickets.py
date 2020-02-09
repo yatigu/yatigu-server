@@ -2,15 +2,15 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def get_tickets():
+def get_tickets(date='20200220', hour='160000', start='서울', end='부산'):
     params = {
         'selGoTrain': '05',
         'radJobId': '1',
         'checkStnNm': 'Y',
-        'txtGoAbrdDt': '20200210',
-        'txtGoHour': '160000',
-        'txtGoStart': '서울',
-        'txtGoEnd': '부산',
+        'txtGoAbrdDt': date,
+        'txtGoHour': hour,
+        'txtGoStart': start,
+        'txtGoEnd': end,
 
     }
     res = requests.post('http://www.letskorail.com/ebizprd/EbizPrdTicketPr21111_i1.do', params=params)
