@@ -36,15 +36,23 @@ class AccountUser(MethodView):
             user_list.append(get_user)  # 유저 리스트에 해당 유저를 추가한다.
         return jsonify(serialize(get_user)), 200
 '''
-from flask import Response, request
+from flask import Response, request, json
 from flask.views import MethodView
 import os
 
 
 class Hooks(MethodView):
     def post(self):
-        print(request.headers)
-        print(request.form['ref'])
+        try:
+            res = json.loads(request.form)
+            print(res['ref'])
+            if res['ref'] == 'refs/heads/master':
+                print(res['ref'])
+        except Exception as e:
+            return Response(str(e), status=400)
+        # print(request.headers)
+        # print(request.form['ref'])
 
-        os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
+        finally:
+            os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
         return Response('push', status=200)
