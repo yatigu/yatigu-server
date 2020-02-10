@@ -8,7 +8,6 @@ from settings.settings import CHROME_DRIVER_PATH
 
 class Login(MethodView):
     def get(self):
-        driver.get('http://www.naver.com/')  # 샘플코드. 컨트롤 가능한지 테스트.
         return 'get'
 
     def post(self):
