@@ -43,6 +43,7 @@ import os
 
 class Hooks(MethodView):
     def post(self):
+        print(request.form)
         try:
             res = json.loads(request.form)
             print(res['ref'])
