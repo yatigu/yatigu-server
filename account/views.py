@@ -36,3 +36,7 @@ class AccountUser(MethodView):
             user_list.append(get_user)  # 유저 리스트에 해당 유저를 추가한다.
         return jsonify(serialize(get_user)), 200
 '''
+class Hooks:
+    def post(self):
+        import os
+        os.system('/home/ec2-user/yatigu-server/.git/hooks/post-receive')
