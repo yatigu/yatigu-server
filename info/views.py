@@ -18,6 +18,6 @@ class Stations(MethodView):
 
 class Tickets(MethodView):
     def get(self):
-        return 'test'
-        # return jsonify(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
+        # return 'test'
+        return jsonify(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
 
