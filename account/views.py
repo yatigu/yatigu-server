@@ -46,12 +46,12 @@ class Hooks(MethodView):
         try:
             res = json.loads(request.form)
             print(res['ref'])
-            if res['ref'] == 'refs/heads/master':
+            if res['ref'] == 'refs/heads/tickets':
                 print(res['ref'])
+                os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
         except Exception as e:
             return Response(str(e), status=400)
         # print(request.headers)
         # print(request.form['ref'])
-        finally:
-            os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
+
         return Response('push', status=200)
