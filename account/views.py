@@ -43,5 +43,5 @@ from flask.views import MethodView
 class Hooks(MethodView):
     def post(self):
         import os
-        os.system('./settings/hooks.sh')
-        Response('push', status=200)
+        os.system('sh ./settings/hooks')
+        return Response('push', status=200)
