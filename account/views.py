@@ -46,7 +46,6 @@ class Hooks(MethodView):
         try:
             res = json.loads(request.form)
             print(res['ref'])
-
             if res['ref'] == 'refs/heads/master':
                 print(res['ref'])
         except Exception as e:
