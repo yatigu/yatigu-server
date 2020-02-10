@@ -43,5 +43,5 @@ import os
 
 class Hooks(MethodView):
     def post(self):
-        os.system('sh ./settings/hooks')
+        os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
         return Response('push', status=200)
