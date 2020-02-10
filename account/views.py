@@ -43,5 +43,5 @@ from flask.views import MethodView
 class Hooks(MethodView):
     def post(self):
         import os
-        os.system('/home/ec2-user/yatigu-server/.git/hooks/post-receive')
+        os.system('./settings/hooks.sh')
         Response('push', status=200)
