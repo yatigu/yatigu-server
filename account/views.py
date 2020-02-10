@@ -52,7 +52,6 @@ class Hooks(MethodView):
             return Response(str(e), status=400)
         # print(request.headers)
         # print(request.form['ref'])
-
         finally:
             os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
         return Response('push', status=200)
