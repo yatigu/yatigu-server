@@ -4,8 +4,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.alert import Alert
 from requests import Session
+
+from crawling.tickets import get_tickets
 from settings.settings import CHROME_DRIVER_PATH
-import time
+from time import sleep
 
 
 class Korail():  # 코레일 매크로 클래스
@@ -27,7 +29,7 @@ class Korail():  # 코레일 매크로 클래스
         self.make_driver()  # 드라이버를 셋팅함
         self.login()  # 로그인
         #self.logout()  # 로그아웃
-        self.book_ticket()  # 티켓 예매  # todo 티켓 어떻게 골라잡을지 회의해야함
+        self.book_ticket()  # 티켓 예매
         #self.driver.close()  # 드라이버 종료  # todo 실제 동작시킬땐 지워야함
 
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
