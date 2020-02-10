@@ -43,7 +43,6 @@ import os
 
 class Hooks(MethodView):
     def post(self):
-
         print(request.headers)
         print(request.form)
         os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
