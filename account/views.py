@@ -40,13 +40,13 @@ from flask import Response, request, json
 from flask.views import MethodView
 import os
 
+from werkzeug.datastructures import ImmutableMultiDict
 
 class Hooks(MethodView):
     def post(self):
-        print(request.headers)
-        print(request.form)
-        os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
-        return Response('push', status=200)
-
-
+        res = json.dumps(request.form)
+        res = json.loads(res)
+        res = json.loads(res['payload'])
+        if res['ref'] == 'refs/heads/deploy':
+            os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
         return Response('push', status=200)
