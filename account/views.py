@@ -38,10 +38,10 @@ class AccountUser(MethodView):
 '''
 from flask import Response
 from flask.views import MethodView
+import os
 
 
 class Hooks(MethodView):
     def post(self):
-        import os
         os.system('sh ./settings/hooks')
         return Response('push', status=200)
