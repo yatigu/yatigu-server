@@ -23,4 +23,5 @@ end = '부산'
 }
 ```
 status_code  
-200 : ok
+200 : ok  
+400 : key error
