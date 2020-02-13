@@ -1,11 +1,10 @@
-import requests
 from datetime import datetime
-
-url = 'http://15.165.170.3:8000'
+from settings.settings import app
+client = app.test_client()
 
 
 def test_stations():  # 기차역을 불러온다.
-    res = requests.get(f'{url}/info/stations/')
+    res = client.get('/info/stations/')
     assert res.status_code == 200
 
 
@@ -16,9 +15,9 @@ def test_tickets():  # 티켓 정보를 불러온다.
         'start': '서울',
         'end': '부산'
     }
-    res = requests.get(f'{url}/info/tickets')  # data 없거나 안맞을경우
+    res = client.get('/info/tickets/')  # data 없거나 안맞을경우
     assert res.status_code == 400
-    res = requests.get(f'{url}/info/tickets', data=data)
+    res = client.get('/info/tickets/', data=data)
     assert res.status_code == 200
 
 
