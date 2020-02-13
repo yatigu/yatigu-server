@@ -1,6 +1,5 @@
 from datetime import datetime
-from settings.settings import app
-client = app.test_client()
+from settings.utils import client
 
 
 def test_stations():  # 기차역을 불러온다.
