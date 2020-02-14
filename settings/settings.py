@@ -36,7 +36,7 @@ elif os.environ.get('MODE') == 'RUN':  # mode - release
     HOST_ADDR = '0.0.0.0'
     DEBUG = False
 else:  # select not permission mode
-    raise Exception('MODE error')
+    raise KeyError('MODE error')
 
 
 # manager
