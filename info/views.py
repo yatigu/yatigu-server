@@ -25,6 +25,5 @@ class Tickets(MethodView):
             request.form['end']
         except KeyError:
             return Response(status=400)
-        return Response('asd')
         return jsonify(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
 
