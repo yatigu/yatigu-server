@@ -111,9 +111,9 @@ class User_management():  # 유저를 관리하기 위한 클래스
         self.users_array.append(user)  # users에 user를 추가함
 
 
-if __name__ == '__main__':
-    users = User_management()  # 유저 관리 오브젝트 생성
-    users.append_user()  # 유저 추가
+#if __name__ == '__main__':
+#    users = User_management()  # 유저 관리 오브젝트 생성
+#    users.append_user()  # 유저 추가
     # users.append_user()  # 유저 추가
     '''
     위의 방식으로 유저들을 생성한 뒤 아래의 방식으로 컨트롤 해준다.
