@@ -1,6 +1,5 @@
 from flask import Blueprint
-
-from account.views import Hooks
+from account.views import Hooks, User
 
 app = Blueprint('account', __name__)
 
@@ -8,3 +7,6 @@ app = Blueprint('account', __name__)
 #app.add_url_rule('/user/', view_func=login_view)
 hooks_view = Hooks.as_view('hooks_view')
 app.add_url_rule('/hooks/', view_func=hooks_view)
+
+user_view = User.as_view('user_view')
+app.add_url_rule('/user/', view_func=user_view)
