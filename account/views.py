@@ -60,7 +60,7 @@ class User(MethodView):
         keys = list()  # key 검사
         for key in res.keys():
             keys.append(key)
-        if 'source' and 'destination' and 'year' and 'month' and 'day' and 'phone' and 'pw' not in keys:
+        if 'source' and 'destination' and 'year' and 'month' and 'day' and 'phone' and 'pw' and 'index' not in keys:
             raise BadRequestKeyError  # 키가 올바르게 들어있지 않음
 
         return Response('push', status=200)
