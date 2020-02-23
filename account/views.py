@@ -38,9 +38,10 @@ class AccountUser(MethodView):
 '''
 from flask import Response, request, json
 from flask.views import MethodView
+import practice.macro as macro
+from werkzeug.exceptions import BadRequestKeyError
 import os
 
-from werkzeug.datastructures import ImmutableMultiDict
 
 class Hooks(MethodView):
     def post(self):
@@ -49,4 +50,17 @@ class Hooks(MethodView):
         res = json.loads(res['payload'])
         if res['ref'] == 'refs/heads/deploy':
             os.system('sh /home/ec2-user/yatigu-server/settings/hooks.sh')
+        return Response('push', status=200)
+
+
+class User(MethodView):
+    def post(self):
+        res = request.form
+
+        keys = list()  # key 검사
+        for key in res.keys():
+            keys.append(key)
+        if 'source' and 'destination' and 'year' and 'month' and 'day' not in keys:
+            raise BadRequestKeyError  # 키가 올바르게 들어있지 않음
+
         return Response('push', status=200)
