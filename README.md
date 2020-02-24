@@ -13,7 +13,7 @@ status_code
 200 : ok  
 
 ### /info/tickets
-get : 기차표 
+get : 기차표 정보를 받아옴
 ```
 request
 {
