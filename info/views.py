@@ -19,7 +19,6 @@ class Stations(MethodView):
 
 class Tickets(MethodView):
     def get(self):
-        return Response('test', headers=headers, status=200)
         res = request.form
         keys = list()  # key 검사
         for key in res.keys():
