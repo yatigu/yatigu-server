@@ -1,5 +1,6 @@
 import os
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
@@ -21,6 +22,7 @@ POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{PORT}/{NAME}'  # pos
 
 # app settings
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRESQL  # db connect
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSON_AS_ASCII'] = False

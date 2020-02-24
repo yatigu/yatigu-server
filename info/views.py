@@ -20,7 +20,6 @@ class Stations(MethodView):
 
 
 class Tickets(MethodView):
-    @cross_origin()
     def get(self):
         res = request.form
         keys = list()  # key 검사
