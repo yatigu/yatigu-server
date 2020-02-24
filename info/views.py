@@ -1,5 +1,7 @@
 from flask import jsonify, request, Response, json
 from flask.views import MethodView
+from flask_cors import cross_origin
+
 from crawling.stations import get_stations
 from crawling.tickets import get_tickets
 from settings.utils import headers
@@ -18,6 +20,7 @@ class Stations(MethodView):
 
 
 class Tickets(MethodView):
+    @cross_origin()
     def get(self):
         res = request.form
         keys = list()  # key 검사
