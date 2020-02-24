@@ -8,4 +8,4 @@ if __name__ == '__main__':
     elif MODE == 'RUN':
         serve(TransLogger(app, setup_console_handler=True),
               host=HOST_ADDR, port=PORT_NUM)
-        #serve(app, host=HOST_ADDR, port=PORT_NUM)
+
