@@ -16,6 +16,15 @@ class Stations(MethodView):
 
 
 class Tickets(MethodView):
+    def get(self):
+        res = request.form
+        keys = list()  # key 검사
+        for key in res.keys():
+            keys.append(key)
+        if 'date' and 'hour' and 'start' and 'end' not in keys:
+            raise BadRequestKeyError  # key가 올바르지 않음
+        return jsonify(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
+
     def post(self):
         res = request.form
         keys = list()  # key 검사
