@@ -16,7 +16,7 @@ class Stations(MethodView):
 
 
 class Tickets(MethodView):
-    def post(self):
+    def get(self):
         res = request.form
         keys = list()  # key 검사
         for key in res.keys():
