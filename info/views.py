@@ -25,7 +25,5 @@ class Tickets(MethodView):
             keys.append(key)
         if 'date' and 'hour' and 'start' and 'end' not in keys:
             raise BadRequestKeyError  # key가 올바르지 않음
-        json_obj = json.dumps(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
-        return Response(json_obj, headers=headers, status=200)
         return jsonify(get_tickets(request.form['date'], request.form['hour'], request.form['start'], request.form['end']))
 
