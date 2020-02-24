@@ -1,11 +1,8 @@
-from flask import jsonify, request, Response, json
+from flask import jsonify, request
 from flask.views import MethodView
-from flask_cors import cross_origin
-
+from werkzeug.exceptions import BadRequestKeyError
 from crawling.stations import get_stations
 from crawling.tickets import get_tickets
-from settings.utils import headers
-from werkzeug.exceptions import BadRequestKeyError
 
 
 class Stations(MethodView):
@@ -15,8 +12,7 @@ class Stations(MethodView):
 
         for index, data in enumerate(station):
             res['stations'][str(index)] = data
-        json_obj = json.dumps(res)
-        return Response(json_obj, headers=headers, status=200)
+        return jsonify(res)
 
 
 class Tickets(MethodView):
