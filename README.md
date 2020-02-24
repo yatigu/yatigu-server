@@ -13,6 +13,7 @@ status_code
 200 : ok  
 
 ### /info/tickets
+get : 기차표 
 ```
 request
 {
