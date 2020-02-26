@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
+from sqlalchemy import create_engine
 import sys
 
 
@@ -20,7 +21,7 @@ PASSWOLRD = 'yatigu'  # postgresql pw
 PORT = '5432'  # postgresql port
 NAME = 'yatigu'  # db name
 POSTGRESQL = f'postgresql://{USER}:{PASSWOLRD}@{HOST_ADDR}:{PORT}/{NAME}'  # postgresql uri
-
+engine = create_engine(POSTGRESQL, connect_args={'connect_timeout': 10})
 
 # app settings
 app = Flask(__name__)
