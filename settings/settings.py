@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_script import Manager, Server
 from flask_migrate import Migrate, MigrateCommand
+import sys
 
 
 # define
@@ -27,10 +28,13 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = POSTGRESQL  # db connect
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSON_AS_ASCII'] = False
-
+app.threaded = True
 
 # select operation mode
-if MODE == 'DEV':  # mode - development
+if MODE == 'TEST' or sys.argv[0].endswith('test'):  # use only pytest
+    HOST_ADDR = '127.0.0.1'
+    DEBUG = False
+elif MODE == 'DEV':  # mode - development
     CHROME_DRIVER_PATH = 'C:\chromedriver.exe'
     HOST_ADDR = '127.0.0.1'
     DEBUG = True
@@ -44,7 +48,7 @@ else:  # select not permission mode
 
 # manager
 app.debug = DEBUG  # 실행 모드에 따라 디버그 온오프
-app.threaded = True
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 manager = Manager(app)
