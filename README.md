@@ -1,6 +1,10 @@
 # yatigu-server
 # ip : 15.165.170.3:8000  
 
+## DATABASE
+```
+alembic upgrade head
+```
 ## API
 ### /info/stations
 get : 기차역 이름을 가져옴  
