@@ -3,7 +3,5 @@
 venv/*
 .idea/*
 *.pyc
-migrations/*
 geckodriver.log
 .vs/
-db/
