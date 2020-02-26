@@ -6,3 +6,4 @@ venv/*
 migrations/*
 geckodriver.log
 .vs/
+db/
