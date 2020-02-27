@@ -41,6 +41,7 @@ from flask.views import MethodView
 import practice.macro as macro
 from werkzeug.exceptions import BadRequestKeyError
 import os
+from settings.utils import api
 
 
 class Hooks(MethodView):
@@ -54,11 +55,10 @@ class Hooks(MethodView):
 
 
 class User(MethodView):
-    def post(self):
-        res = request.form
-
+    @api
+    def post(self, data):
         keys = list()  # key 검사
-        for key in res.keys():
+        for key in data.keys():
             keys.append(key)
         if 'source' and 'destination' and 'year' and 'month' and 'day' and 'phone' and 'pw' and 'index' not in keys:
             raise BadRequestKeyError  # 키가 올바르게 들어있지 않음
