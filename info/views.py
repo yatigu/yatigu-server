@@ -19,19 +19,12 @@ class Stations(MethodView):
 class Tickets(MethodView):
     @api
     def get(self, data):
-        keys = list()  # key 검사
-        for key in data.keys():
-            keys.append(key)
-        if 'date' and 'hour' and 'start' and 'end' not in keys:
-            raise BadRequestKeyError  # key가 올바르지 않음
+        match_list = ['date', 'hour', 'start', 'end']
+        for key in match_list:
+            if key not in data.keys():
+                raise BadRequestKeyError  # data에 key가 올바르게 담겨있지 않음
+
         return jsonify(get_tickets(data['date'], data['hour'], data['start'], data['end']))
 
-    @api
-    def post(self, data):
-        keys = list()  # key 검사
-        for key in data.keys():
-            keys.append(key)
-        if 'date' and 'hour' and 'start' and 'end' not in keys:
-            raise BadRequestKeyError  # key가 올바르지 않음
-        return jsonify(get_tickets(data['date'], data['hour'], data['start'], data['end']))
+
 

@@ -57,10 +57,9 @@ class Hooks(MethodView):
 class User(MethodView):
     @api
     def post(self, data):
-        keys = list()  # key 검사
-        for key in data.keys():
-            keys.append(key)
-        if 'source' and 'destination' and 'year' and 'month' and 'day' and 'phone' and 'pw' and 'index' not in keys:
-            raise BadRequestKeyError  # 키가 올바르게 들어있지 않음
+        match_list = ['source', 'destination', 'year', 'month', 'day', 'phone', 'pw', 'index']
+        for key in match_list:
+            if key not in data.keys():
+                raise BadRequestKeyError  # data에 key가 올바르게 담겨있지 않음
 
         return Response('push', status=200)
