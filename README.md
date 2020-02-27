@@ -6,7 +6,7 @@
 alembic upgrade head
 ```
 ## API
-### /info/stations
+### /info/stations/
 get : 기차역 이름을 가져옴  
 
 ```
@@ -16,7 +16,7 @@ request
 status_code  
 200 : ok  
 
-### /info/tickets
+### /info/tickets/
 get : 기차표 정보를 받아옴
 ```
 request
@@ -32,7 +32,7 @@ status_code
 400 : key error
 
 
-### /account/user
+### /account/user/
 post : 매크로 객체를 생성
 ```
 request
