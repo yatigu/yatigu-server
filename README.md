@@ -37,7 +37,7 @@ post : 매크로 객체를 생성
 ```
 request
 {
-id = 핸드폰번호
+phone = 핸드폰번호
 pw = 코레일 비밀번호
 source = 출발지
 destination = 도착지
