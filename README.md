@@ -30,3 +30,20 @@ end = '부산'
 status_code  
 200 : ok  
 400 : key error
+
+
+### /account/user
+post : 매크로 객체를 생성
+```
+request
+{
+id = 핸드폰번호
+pw = 코레일 비밀번호
+source = 출발지
+destination = 도착지
+index = 검색했을때 몇번째표인지(인덱스 1부터시작)
+year = 출발날짜
+month = 출발날짜
+day = 출발날짜
+}
+```
