@@ -12,7 +12,8 @@ from settings.settings import CHROME_DRIVER_PATH
 
 class Korail:  # 코레일 매크로 클래스
     class Ticket_info:  # 티켓 정보를 담고있는 클래스
-        def __init__(self, source='서울', destination='부산', year='2020', month='02', day='10', hour='23', index='1', phone='01040282628', pw='rhrnak2628!'):
+        def __init__(self, source='서울', destination='부산', year='2020', month='02', day='10', hour='23',
+                     index='1', phone='01012341234', pw='1234!'):
             self.source = source  # 출발지
             self.destination = destination  # 목적지
             self.year = year  # 해당 년도
@@ -23,7 +24,7 @@ class Korail:  # 코레일 매크로 클래스
             self.phone = phone
             self.pw = pw
 
-    def __init__(self, source='서울', destination='부산', year='2020', month='01', day='29', hour='15', index='1', phone='01040282628', pw='rhrnak2628!'):
+    def __init__(self, source='서울', destination='부산', year='2020', month='01', day='29', hour='15', index='1', phone='01012341234', pw='1234!'):
         self.driver = None
         self.ticket_info = self.Ticket_info(source, destination, year, month, day, hour, index, phone, pw)  # 티켓 정보를 담아줌
         self.korail_url = 'http://www.letskorail.com/korail/com/login.do'  # 로그인창 주소
@@ -50,9 +51,9 @@ class Korail:  # 코레일 매크로 클래스
 
     def login(self):  # 로그인하는 함수
         self.click_element('//*[@title="휴대전화번호 로그인"]')  # 휴대전화 번호로 로그인 클릭
-        self.send_keys('//*[@title="휴대전화 중간자리"]', '4028')  # 중간자리 입력
-        self.send_keys('//*[@title="휴대전화 끝자리"]', '2628')  # 끝자리 입력
-        self.send_keys('//*[@name="txtPwd1"]', 'rhrnak2628!' + Keys.ENTER)  # 비밀번호 입력 후 엔터
+        self.send_keys('//*[@title="휴대전화 중간자리"]', self.ticket_info.phone[3:6])  # 중간자리 입력
+        self.send_keys('//*[@title="휴대전화 끝자리"]', self.ticket_info.phone[7:10])  # 끝자리 입력
+        self.send_keys('//*[@name="txtPwd1"]', '1234!' + Keys.ENTER)  # 비밀번호 입력 후 엔터
 
     def book_ticket(self):  # 예매하는 과정을 처리하는 함수
         self.driver.get(self.book_url)  # 티켓 검색 페이지로 이동
@@ -94,7 +95,7 @@ class UserManagement:  # 유저를 관리하기 위한 클래스
 
     def append_user(self, source='서울', destination='부산',
                     year='2020', month='02', day='10', hour='12',
-                    phone='01040282628', pw='rhrnak2628!', index='1'):  # 유저를 어레이에 추가하는 함수
+                    phone='01012341234', pw='1234!', index='1'):  # 유저를 어레이에 추가하는 함수
         user = Korail(source=source, destination=destination,
                       year=year, month=month, day=day, hour=hour,
                       phone=phone, pw=pw, index=index)  # 유저를 생성

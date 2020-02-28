@@ -3,8 +3,8 @@ def test_user(client):
     assert res.status_code == 400
 
     data = {
-        'phone': '01026282628',
-        'pw': '01026282628',
+        'phone': '01012341234',
+        'pw': '01012341234',
         'index': '3',
         'source': '서울',
         'destination': '부산',
