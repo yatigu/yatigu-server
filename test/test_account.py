@@ -10,7 +10,8 @@ def test_user(client):
         'destination': '부산',
         'year': '2020',
         'month': '03',
-        'day': '09'
+        'day': '09',
+        'hour': '15'
     }
     res = client.post('/account/user/', data=data)
     assert res.status_code == 200
