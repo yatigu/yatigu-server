@@ -40,7 +40,7 @@ elif MODE == 'DEV':  # mode - development
     HOST_ADDR = '127.0.0.1'
     DEBUG = True
 elif MODE == 'RUN':  # mode - release
-    CHROME_DRIVER_PATH = '/bin/google-chrome'
+    CHROME_DRIVER_PATH = '/bin/google-chrome-stable'
     HOST_ADDR = '0.0.0.0'
     DEBUG = False
 else:  # select not permission mode
