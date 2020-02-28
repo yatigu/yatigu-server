@@ -41,14 +41,14 @@ class Korail:  # 코레일 매크로 클래스
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # 창 안띄우고 진행
-        # chrome_options.add_argument("disable-infobars")  # info message 안띄움
-        # chrome_options.add_argument("start-maximized")  # 나머지 옵션은 잘 모르겠는데 빨라진다는 말이있어서 씀
-        # chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("disable-infobars")  # info message 안띄움
+        chrome_options.add_argument("start-maximized")  # 나머지 옵션은 잘 모르겠는데 빨라진다는 말이있어서 씀
+        chrome_options.add_argument("--disable-extensions")
         return chrome_options
 
     def make_driver(self):  # 크롬 드라이버를 연동하고 코레일로 이동하는 함수
         self.driver = webdriver.Chrome(
-            executable_path=self.chrome_driver_path, options=self.chrome_options())  # 드라이버에 옵션 적용
+            executable_path=self.chrome_driver_path, chrome_options=self.chrome_options())  # 드라이버에 옵션 적용
         self.move_url(self.korail_url)  # 로그인 페이지로 이동
 
     def login(self):  # 로그인하는 함수
