@@ -42,6 +42,8 @@ import practice.macro as macro
 from werkzeug.exceptions import BadRequestKeyError
 import os
 from settings.utils import api
+from practice import macro
+import threading
 
 
 class Hooks(MethodView):
@@ -61,5 +63,7 @@ class User(MethodView):
         for key in match_list:
             if key not in data.keys():
                 raise BadRequestKeyError  # data에 key가 올바르게 담겨있지 않음
-
-        return Response('push', status=200)
+        t1 = threading.Thread(target=macro.users.append_user, args=(data['source'], data['destination'],
+                                                              data['year'], data['month'], data['day'], data['hour'],
+                                                              data['phone'], data['pw'], data['index'])).start()
+        return Response('running', status=200)
