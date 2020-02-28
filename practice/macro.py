@@ -36,6 +36,7 @@ class Korail:  # 코레일 매크로 클래스
         self.book_ticket()  # 티켓 예매
         alert = self.driver.switch_to_alert()
         alert.accept()
+        self.driver.close()  # todo 나중에 지워야함.
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
         chrome_options.add_argument("--headless")  # 창 안띄우고 진행
@@ -51,9 +52,9 @@ class Korail:  # 코레일 매크로 클래스
 
     def login(self):  # 로그인하는 함수
         self.click_element('//*[@title="휴대전화번호 로그인"]')  # 휴대전화 번호로 로그인 클릭
-        self.send_keys('//*[@title="휴대전화 중간자리"]', self.ticket_info.phone[3:6])  # 중간자리 입력
-        self.send_keys('//*[@title="휴대전화 끝자리"]', self.ticket_info.phone[7:10])  # 끝자리 입력
-        self.send_keys('//*[@name="txtPwd1"]', '1234!' + Keys.ENTER)  # 비밀번호 입력 후 엔터
+        self.send_keys('//*[@title="휴대전화 중간자리"]', self.ticket_info.phone[3:7])  # 중간자리 입력
+        self.send_keys('//*[@title="휴대전화 끝자리"]', self.ticket_info.phone[7:])  # 끝자리 입력
+        self.send_keys('//*[@name="txtPwd1"]', self.ticket_info.pw + Keys.ENTER)  # 비밀번호 입력 후 엔터
 
     def book_ticket(self):  # 예매하는 과정을 처리하는 함수
         self.driver.get(self.book_url)  # 티켓 검색 페이지로 이동
