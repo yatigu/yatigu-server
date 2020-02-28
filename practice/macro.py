@@ -44,6 +44,10 @@ class Korail:  # 코레일 매크로 클래스
         chrome_options.add_argument("disable-infobars")  # info message 안띄움
         chrome_options.add_argument("start-maximized")  # 나머지 옵션은 잘 모르겠는데 빨라진다는 말이있어서 씀
         chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--no-sandbox")  # bypass OS security model
+        chrome_options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        chrome_options.add_experimental_option('useAutomationExtension', False)
         return chrome_options
 
     def make_driver(self):  # 크롬 드라이버를 연동하고 코레일로 이동하는 함수
