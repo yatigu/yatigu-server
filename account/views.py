@@ -1,6 +1,6 @@
-from flask import Response, request, json
+from flask import Response, request, json, jsonify
 from flask.views import MethodView
-from werkzeug.exceptions import BadRequestKeyError
+from werkzeug.exceptions import BadRequestKeyError, TooManyRequests
 import os
 from settings.utils import api
 from practice import macro
@@ -24,7 +24,9 @@ class User(MethodView):
         for key in match_list:
             if key not in data.keys():
                 raise BadRequestKeyError  # data에 key가 올바르게 담겨있지 않음
+        if macro.users.amount_of_users >= 10:
+            raise TooManyRequests
         threading.Thread(target=macro.users.append_user, args=(data['source'], data['destination'],
                                                               data['year'], data['month'], data['day'], data['hour'],
                                                               data['phone'], data['pw'], data['index'])).start()
-        return Response('running', status=200)
+        return jsonify({'amount': macro.users.amount_of_users})
