@@ -23,6 +23,7 @@ class Korail:  # 코레일 매크로 클래스
 
     def __init__(self, source='서울', destination='부산', year='2020', month='01', day='29', hour='15', index='1', phone='01012341234', pw='1234!'):
         self.driver = None
+        self.is_ = False
         self.ticket_info = self.Ticket_info(source, destination, year, month, day, hour, index, phone, pw)  # 티켓 정보를 담아줌
         self.korail_url = 'http://www.letskorail.com/korail/com/login.do'  # 로그인창 주소
         self.chrome_driver_path = CHROME_DRIVER_PATH  # 크롬드라이버 경로
@@ -39,7 +40,8 @@ class Korail:  # 코레일 매크로 클래스
         except Exception as e:  # 예매 실패
             pass
         else:  # 예매 성공
-            self.driver.close()
+            self.is_ = True
+            self.driver.quit()
 
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
@@ -101,10 +103,12 @@ class Korail:  # 코레일 매크로 클래스
 class UserManagement:  # 유저를 관리하기 위한 클래스
     def __init__(self):
         self.users_array = []  # 유저의 세션을 저장하기 위한 리스트
+        self.amount_of_users = 0
 
     def append_user(self, source='서울', destination='부산',
                     year='2020', month='02', day='10', hour='12',
                     phone='01012341234', pw='1234!', index='1'):  # 유저를 어레이에 추가하는 함수
+        self.amount_of_users += 1
         user = Korail(source=source, destination=destination,
                       year=year, month=month, day=day, hour=hour,
                       phone=phone, pw=pw, index=index)  # 유저를 생성
@@ -116,11 +120,18 @@ users = UserManagement()  # 유저 관리 오브젝트 생성
 
 def repeat():
     while True:
-        if len(users.users_array) > 0:
-            for user in users.users_array:
-                user.repeat()
+        try:
+            if len(users.users_array) > 0:
+                for user in users.users_array:
+                    user.repeat()
+                    if user.is_:
+                        users.users_array.remove(user)
+                        users.amount_of_users -= 1
+        except KeyboardInterrupt:
+            break
 
 
 threading.Thread(target=repeat).start()
+
 
 
