@@ -1,6 +1,7 @@
-from flask import jsonify, request
+from flask import jsonify
 from flask.views import MethodView
 from werkzeug.exceptions import BadRequestKeyError
+
 from crawling.stations import get_stations
 from crawling.tickets import get_tickets
 from settings.utils import api
