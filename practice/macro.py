@@ -1,7 +1,4 @@
-# import os
-# import sys
-#
-# sys.path.append(os.path.abspath('../../yatigu-server'))
+import threading
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -33,14 +30,22 @@ class Korail:  # 코레일 매크로 클래스
 
         self.make_driver()  # 드라이버를 셋팅함
         self.login()  # 로그인
-        self.book_ticket()  # 티켓 예매
-        alert = self.driver.switch_to_alert()
-        alert.accept()
-        self.driver.close()  # todo 나중에 지워야함.
+        # self.repeat()  # 반복동작들어있는 함수
+        # self.driver.close()  # todo 나중에 지워야함.
+
+    def repeat(self):  # 반복시킬 함수
+        try:
+            self.book_ticket()  # 티켓 예매
+            alert = self.driver.switch_to_alert()
+            alert.accept()
+        except Exception as e:  # 예매 실패
+            pass
+        else:  # 예매 성공
+            self.driver.close()
 
     def chrome_options(self):  # 크롬 드라이버에 옵션을 추가하는 함수
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # 창 안띄우고 진행
+        # chrome_options.add_argument("--headless")  # 창 안띄우고 진행
         chrome_options.add_argument("disable-infobars")  # info message 안띄움
         chrome_options.add_argument("start-maximized")  # 나머지 옵션은 잘 모르겠는데 빨라진다는 말이있어서 씀
         chrome_options.add_argument("--disable-extensions")
@@ -109,4 +114,15 @@ class UserManagement:  # 유저를 관리하기 위한 클래스
 
 
 users = UserManagement()  # 유저 관리 오브젝트 생성
-# users.append_user(source='서울', destination='천안', year='2020', month='03', day='01', hour='13')  # 유저 추가
+
+
+def repeat():
+    while True:
+        if len(users.users_array) > 0:
+            for user in users.users_array:
+                user.repeat()
+
+
+threading.Thread(target=repeat).start()
+
+
