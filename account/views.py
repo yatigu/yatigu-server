@@ -24,7 +24,7 @@ class User(MethodView):
         for key in match_list:
             if key not in data.keys():
                 raise BadRequestKeyError  # data에 key가 올바르게 담겨있지 않음
-        if macro.users.amount_of_users >= 10:
+        if macro.users.amount_of_users >= 3:
             raise TooManyRequests
         threading.Thread(target=macro.users.append_user, args=(data['source'], data['destination'],
                                                               data['year'], data['month'], data['day'], data['hour'],
