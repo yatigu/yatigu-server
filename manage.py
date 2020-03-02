@@ -4,8 +4,9 @@ from paste.translogger import TransLogger
 
 if __name__ == '__main__':
     if MODE == 'DEV':
-        manager.run()
+            manager.run()
     elif MODE == 'RUN':
-        serve(TransLogger(app, setup_console_handler=True),
-              host=HOST_ADDR, port=PORT_NUM)
+            serve(TransLogger(app, setup_console_handler=True),
+                  host=HOST_ADDR, port=PORT_NUM)
+
 
