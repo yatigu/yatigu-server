@@ -30,8 +30,6 @@ class Korail:  # 코레일 매크로 클래스
 
         self.make_driver()  # 드라이버를 셋팅함
         self.login()  # 로그인
-        # self.repeat()  # 반복동작들어있는 함수
-        # self.driver.close()  # todo 나중에 지워야함.
 
     def repeat(self):  # 반복시킬 함수
         try:
