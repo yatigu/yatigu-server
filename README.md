@@ -1,5 +1,5 @@
 # yatigu-server
-# ip : 15.165.170.3:8000  
+
 
 ## DATABASE
 ```
